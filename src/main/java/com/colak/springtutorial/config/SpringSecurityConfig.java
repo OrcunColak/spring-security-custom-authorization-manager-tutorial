@@ -34,7 +34,7 @@ public class SpringSecurityConfig {
                         // admin can access AdminController and GreetingController
                         .requestMatchers("/admin/**").hasRole("ADMIN")
 
-                        .requestMatchers("/user/**").access(roleAuthorizationManager) // Dynamic Authorization
+                        .requestMatchers("/user/**").access(roleAuthorizationManager) // Apply Custom AuthorizationManager
                         // everybody can access
                         .requestMatchers("/public/**").permitAll()
                         .anyRequest().authenticated()
