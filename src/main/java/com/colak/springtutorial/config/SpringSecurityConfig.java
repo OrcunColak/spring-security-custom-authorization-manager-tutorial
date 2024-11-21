@@ -31,11 +31,11 @@ public class SpringSecurityConfig {
 
         http.authorizeHttpRequests(auth -> auth
                         // RBAC Urls
-                        // admin can access AdminController and GreetingController
+                        // admin can access AdminController
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-
+                        // user can access UserController
                         .requestMatchers("/user/**").access(roleAuthorizationManager) // Apply Custom AuthorizationManager
-                        // everybody can access
+                        // everybody can access PublicController
                         .requestMatchers("/public/**").permitAll()
                         .anyRequest().authenticated()
                 )
